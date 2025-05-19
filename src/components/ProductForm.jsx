@@ -9,6 +9,7 @@ const initialState = {
   stock: '',
 };
 
+estado: true,
 
 function ProductForm({ addProduct, updateProduct, editingProduct }) {
   const [product, setProduct] = useState(initialState);
