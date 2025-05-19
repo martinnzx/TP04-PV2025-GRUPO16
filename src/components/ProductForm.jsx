@@ -22,17 +22,28 @@ function ProductForm({ addProduct, updateProduct, editingProduct }) {
       precioUnitario: parseFloat(product.precioUnitario),
       descuento: parseFloat(product.descuento),
       stock: parseInt(product.stock),
-      precioConDescuento: parseFloat(precioConDescuento.toFixed(2))
+      precioConDescuento: parseFloat(precioConDescuento.toFixed(2)),
+      estado: true,
+
     };
+
+    if (editingProduct) {
+      updateProduct(finalProduct);
+    } else {
+      finalProduct.id = Date.now();
+      addProduct(finalProduct);
+    }
 
     setProduct(initialState);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {
-      }
-      <button type="submit">{editingProduct ? 'Actualizar' : 'Agregar'}</button>
+      <input name="descripcion" placeholder="Descripción" value={product.descripcion} onChange={handleChange} required />
+      <input name="precioUnitario" type="number" placeholder="Precio" value={product.precioUnitario} onChange={handleChange} required />
+      <input name="descuento" type="number" placeholder="Descuento (%)" value={product.descuento} onChange={handleChange} required />
+      <input name="stock" placeholder="Stock" type="number" value={product.stock} onChange={handleChange} required />
+      <button type="submit">{editingProduct ? 'Modificar' : 'Agregar'}</button>
     </form>
   );
 }
