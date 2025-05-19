@@ -50,13 +50,10 @@ function App() {
     setEditingProduct(product);
   }, []);
 
-      <p id="label_buscar"> Buscar: </p>
-
-
   return (
     <div className="container">
       <h2>Gestión de Productos - PV2025 - Grupo 16</h2>
-      <p> Buscar: </p>
+      <p id="label_buscar"> Buscar: </p>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       <ProductForm

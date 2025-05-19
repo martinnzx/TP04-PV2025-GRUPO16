@@ -7,9 +7,8 @@ const initialState = {
   precioUnitario: '',
   descuento: '',
   stock: '',
+  estado: true,
 };
-
-estado: true,
 
 function ProductForm({ addProduct, updateProduct, editingProduct }) {
   const [product, setProduct] = useState(initialState);
