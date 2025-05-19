@@ -46,6 +46,12 @@ function App() {
     setProducts(prev => prev.map(p => (p.id === id ? { ...p, estado: false } : p)));
   }, []);
 
+  const handleEdit = useCallback((product) => {
+    setEditingProduct(product);
+  }, []);
+
+      <p id="label_buscar"> Buscar: </p>
+
 
   return (
     <div className="container">
@@ -67,5 +73,6 @@ function App() {
   );
 
 }
+
 
 export default App;
