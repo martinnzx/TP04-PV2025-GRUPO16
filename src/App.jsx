@@ -7,6 +7,8 @@ import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
 import SearchBar from './components/SearchBar';
 
+import './index.css';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
@@ -18,6 +20,10 @@ function App() {
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    console.log('Productos actualizados:', products);
+  }, [products]);
 
   const filteredProducts = useMemo(() => {
     return products.filter(p =>
@@ -37,7 +43,7 @@ function App() {
 
 
   const deleteProduct = useCallback((id) => {
-    setProducts(prev => prev.filter(p => p.id !== id));
+    setProducts(prev => prev.map(p => (p.id === id ? { ...p, estado: false } : p)));
   }, []);
 
 
