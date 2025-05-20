@@ -13,6 +13,19 @@ const initialState = {
 function ProductForm({ addProduct, updateProduct, editingProduct }) {
   const [product, setProduct] = useState(initialState);
 
+  useEffect(() => {
+      if (editingProduct) {
+        setProduct(editingProduct);
+      } else {
+        setProduct(initialState);
+      }
+    }, [editingProduct]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProduct(prev => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
